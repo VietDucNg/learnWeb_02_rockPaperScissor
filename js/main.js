@@ -8,5 +8,11 @@ function getComputerChoice() {
     else return 'scissors'
 }
 
+// function to get user choice
+function getHumanChoice() {
+    let humanChoice = prompt("what's your choice?").toUpperCase();
+    return humanChoice;
+}
+
 
 
