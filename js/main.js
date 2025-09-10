@@ -14,5 +14,40 @@ function getHumanChoice() {
     return humanChoice;
 }
 
+// keep track the score
+let humanScore = 0;
+let computerScore = 0;
+
+// game logic for 1 round
+function playRound(humanChoice, ComputerChoice) {
+    if (humanChoice == 'ROCK' && ComputerChoice == 'rock') return 'it is a tie!';
+    else if (humanChoice == 'ROCK' && ComputerChoice == 'paper') {
+        computerScore ++;
+        return `You lose! Computer choices ${ComputerChoice}`;
+    } 
+    else if (humanChoice == 'ROCK' && ComputerChoice == 'scissors') {
+        humanScore ++;
+        return `You win! Computer choices ${ComputerChoice}`;
+    }
+    else if (humanChoice == 'PAPER' && ComputerChoice == 'paper') return 'it is a tie!';
+    else if (humanChoice == 'PAPER' && ComputerChoice == 'scissors') {
+        computerScore ++;
+        return `You lose! Computer choices ${ComputerChoice}`;
+    }
+    else if (humanChoice == 'PAPER' && ComputerChoice == 'rock') {
+        humanScore ++;     
+        return `You win! Computer choices ${ComputerChoice}`;
+    }
+    else if (humanChoice == 'SCISSORS' && ComputerChoice == 'scissors') return 'it is a tie!';
+    else if (humanChoice == 'SCISSORS' && ComputerChoice == 'rock') {
+        computerScore ++;
+        return `You lose! Computer choices ${ComputerChoice}`;
+    }
+    else if (humanChoice == 'SCISSORS' && ComputerChoice == 'paper') {
+        humanScore ++;
+        return `You win! Computer choices ${ComputerChoice}`;
+    }
+}
+
 
 
