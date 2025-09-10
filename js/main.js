@@ -49,5 +49,13 @@ function playRound(humanChoice, ComputerChoice) {
     }
 }
 
+// play the game 5 rounds
+function playGame() {
+    for (let i=1; i<=5; i++) {
+        console.log(playRound(humanChoice=getHumanChoice(), ComputerChoice=getComputerChoice()));
+        console.log(`Your'score: ${humanScore}\nComputer'score: ${computerScore}`);
+    }
+}
 
+playGame();
 
