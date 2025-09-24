@@ -60,28 +60,35 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+// function to reset the game
+function resetGame() {
+    resultInfoDiv.textContent = 'Choose your weapon and challenge the computer!';
+    resultMessDiv.textContent = 'The one score 5 points first wins the game';
+    userScoreDiv.textContent = 0;
+    comScoreDiv.textContent = 0;
+    humanScore = 0;
+    computerScore = 0;
+}
+
 // launch the game on user selection click
-const userScore = document.querySelector('.userScore');
-const comScore = document.querySelector('.comScore');
-const resultInfo = document.querySelector('.resultInfo');
-const resultMess = document.querySelector('.resultMess');
+const userScoreDiv = document.querySelector('.userScore');
+const comScoreDiv = document.querySelector('.comScore');
+const resultInfoDiv = document.querySelector('.resultInfo');
+const resultMessDiv = document.querySelector('.resultMess');
 
 const userSelect_btn = document.querySelectorAll('.userSelect');
 userSelect_btn.forEach( btn => btn.addEventListener('click', function() {
     let result = playRound(getHumanChoice(btn), getComputerChoice());
 
     // display message and score
-    resultInfo.textContent = result[0];
-    resultMess.textContent = result[1];
-    userScore.textContent = humanScore;
-    comScore.textContent = computerScore;
+    resultInfoDiv.textContent = result[0];
+    resultMessDiv.textContent = result[1];
+    userScoreDiv.textContent = humanScore;
+    comScoreDiv.textContent = computerScore;
+
+    // reset game if someone reach 5 points
+    if (humanScore === 5 || computerScore === 5) resetGame();
 }))
-
-
-
-
-
-
 
 
 
