@@ -19,41 +19,62 @@ function getHumanChoice(btn) {
 let humanScore = 0;
 let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice == 'ROCK' && computerChoice == 'rock') return 'it is a tie!';
+    if (humanChoice == 'ROCK' && computerChoice == 'rock') 
+        return ['It is a tie!',`Computer also choices ${computerChoice}`]
+        // return `It is a tie! \nComputer also choices ${computerChoice}`;
     else if (humanChoice == 'ROCK' && computerChoice == 'paper') {
         computerScore ++;
-        return `You lose! Computer choices ${computerChoice}`;
+        return ['You lose!',`Rock is beaten by ${computerChoice}`]
+        // return `You lose! Rock is beaten by ${computerChoice}`;
     } 
     else if (humanChoice == 'ROCK' && computerChoice == 'scissors') {
         humanScore ++;
-        return `You win! Computer choices ${computerChoice}`;
+        return ['You win!',`Rock beats ${computerChoice}`]
+        // return `You win! \nRock beats ${computerChoice}`;
     }
-    else if (humanChoice == 'PAPER' && computerChoice == 'paper') return 'it is a tie!';
+    else if (humanChoice == 'PAPER' && computerChoice == 'paper') 
+        return ['It is a tie!',`Computer also choices ${computerChoice}`]
+        // return `It is a tie! \nComputer also choices ${computerChoice}`;
     else if (humanChoice == 'PAPER' && computerChoice == 'scissors') {
         computerScore ++;
-        return `You lose! Computer choices ${computerChoice}`;
+        return ['You lose!',`Paper is beaten by ${computerChoice}`]
+        // return `You lose! \nPaper is beaten by ${computerChoice}`;
     }
     else if (humanChoice == 'PAPER' && computerChoice == 'rock') {
-        humanScore ++;     
-        return `You win! Computer choices ${computerChoice}`;
+        humanScore ++;
+        return ['You win!',`Paper beats ${computerChoice}`]
+        // return `You win! \nPaper beats ${computerChoice}`;
     }
-    else if (humanChoice == 'SCISSORS' && computerChoice == 'scissors') return 'it is a tie!';
+    else if (humanChoice == 'SCISSORS' && computerChoice == 'scissors') 
+        return ['It is a tie!',`Computer also choices ${computerChoice}`]
+        // return `It is a tie! \nComputer also choices ${computerChoice}`;
     else if (humanChoice == 'SCISSORS' && computerChoice == 'rock') {
         computerScore ++;
-        return `You lose! Computer choices ${computerChoice}`;
+        return ['You lose!',`Scissors is beaten by ${computerChoice}`]
+        // return `You lose! \nScissors is beaten by ${computerChoice}`;
     }
     else if (humanChoice == 'SCISSORS' && computerChoice == 'paper') {
         humanScore ++;
-        return `You win! Computer choices ${computerChoice}`;
+        return ['You win!',`Scissors beats ${computerChoice}`]
+        // return `You win! \nScissors beats ${computerChoice}`;
     }
 }
 
 // launch the game on user selection click
+const userScore = document.querySelector('.userScore');
+const comScore = document.querySelector('.comScore');
+const resultInfo = document.querySelector('.resultInfo');
+const resultMess = document.querySelector('.resultMess');
+
 const userSelect_btn = document.querySelectorAll('.userSelect');
 userSelect_btn.forEach( btn => btn.addEventListener('click', function() {
     let result = playRound(getHumanChoice(btn), getComputerChoice());
-    console.log(result);
-    console.log(`Your'score: ${humanScore}\nComputer'score: ${computerScore}`);
+
+    // display message and score
+    resultInfo.textContent = result[0];
+    resultMess.textContent = result[1];
+    userScore.textContent = humanScore;
+    comScore.textContent = computerScore;
 }))
 
 
