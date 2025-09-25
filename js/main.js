@@ -7,6 +7,9 @@ const winnerPromptContent = document.querySelector('.winnerPromptContent');
 const winnerMess = document.querySelector('.winnerMess');
 const userSelect_btn = document.querySelectorAll('.userSelect');
 const playAgainBtn = document.querySelector('.playAgainBtn');
+const userChoiceIcon = document.querySelector('.userChoiceIcon');
+const comChoiceIcon = document.querySelector('.comChoiceIcon');
+
 
 // function to randomly return computer choice of rock or paper or scissor
 function getComputerChoice() {
@@ -28,43 +31,40 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == 'ROCK' && computerChoice == 'rock') 
         return ['It is a tie!',`Computer also choices ${computerChoice}`]
-        // return `It is a tie! \nComputer also choices ${computerChoice}`;
     else if (humanChoice == 'ROCK' && computerChoice == 'paper') {
         computerScore ++;
         return ['You lose!',`Rock is beaten by ${computerChoice}`]
-        // return `You lose! Rock is beaten by ${computerChoice}`;
     } 
     else if (humanChoice == 'ROCK' && computerChoice == 'scissors') {
         humanScore ++;
         return ['You win!',`Rock beats ${computerChoice}`]
-        // return `You win! \nRock beats ${computerChoice}`;
     }
     else if (humanChoice == 'PAPER' && computerChoice == 'paper') 
         return ['It is a tie!',`Computer also choices ${computerChoice}`]
-        // return `It is a tie! \nComputer also choices ${computerChoice}`;
     else if (humanChoice == 'PAPER' && computerChoice == 'scissors') {
         computerScore ++;
         return ['You lose!',`Paper is beaten by ${computerChoice}`]
-        // return `You lose! \nPaper is beaten by ${computerChoice}`;
     }
     else if (humanChoice == 'PAPER' && computerChoice == 'rock') {
         humanScore ++;
         return ['You win!',`Paper beats ${computerChoice}`]
-        // return `You win! \nPaper beats ${computerChoice}`;
     }
     else if (humanChoice == 'SCISSORS' && computerChoice == 'scissors') 
         return ['It is a tie!',`Computer also choices ${computerChoice}`]
-        // return `It is a tie! \nComputer also choices ${computerChoice}`;
     else if (humanChoice == 'SCISSORS' && computerChoice == 'rock') {
         computerScore ++;
         return ['You lose!',`Scissors is beaten by ${computerChoice}`]
-        // return `You lose! \nScissors is beaten by ${computerChoice}`;
     }
     else if (humanChoice == 'SCISSORS' && computerChoice == 'paper') {
         humanScore ++;
         return ['You win!',`Scissors beats ${computerChoice}`]
-        // return `You win! \nScissors beats ${computerChoice}`;
     }
+}
+
+function getChoiceIcon (choice) {
+    if (choice.toUpperCase() === 'ROCK') return '✊';
+    else if (choice.toUpperCase() === 'PAPER') return '✋';
+    else return '✌';
 }
 
 function resetGame() {
@@ -97,7 +97,11 @@ userSelect_btn.forEach( btn => btn.addEventListener('click', function() {
     // prompt winner message if someone reach 5 points
     if (humanScore === 5 || computerScore === 5) callWinnerPrompt();
     else {
-        let result = playRound(getHumanChoice(btn), getComputerChoice());
+        let tmp_comChoice = getComputerChoice();
+        userChoiceIcon.textContent = getChoiceIcon(getHumanChoice(btn));
+        comChoiceIcon.textContent = getChoiceIcon(tmp_comChoice);
+
+        let result = playRound(getHumanChoice(btn),tmp_comChoice);
 
         // display message and score
         resultInfoDiv.textContent = result[0];
