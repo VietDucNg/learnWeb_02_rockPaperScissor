@@ -67,9 +67,29 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+function resetGame() {
+    resultInfoDiv.textContent = 'Pick your fighter and challenge the computer!';
+    resultMessDiv.textContent = 'Score 5 points first to win the game';
+    userScoreDiv.textContent = 0;
+    comScoreDiv.textContent = 0;
+    humanScore = 0;
+    computerScore = 0;
+}
+
 function callWinnerPrompt() {
     winnerPrompt.classList.remove('hidden');
     winnerMess.textContent = (computerScore === 5) ? 'You lost! 😓' : 'You won! 🎉';
+
+    // reset game on playAgainBtn click
+    playAgainBtn.addEventListener('click', function() {
+        winnerPrompt.classList.add('hidden');
+        resetGame();
+    });
+
+    // hide winnerPrompt if user click on background
+    winnerPrompt.addEventListener('click', function(e) {
+        if (!winnerPromptContent.contains(e.target)) winnerPrompt.classList.add('hidden');
+    },{capture:true})
 }
 
 // launch the game on user selection click
@@ -91,21 +111,3 @@ userSelect_btn.forEach( btn => btn.addEventListener('click', function() {
 }))
 
 
-// // winnerPrompt: click background and click playAgainBtn
-function resetGame() {
-    resultInfoDiv.textContent = 'Pick your fighter and challenge the computer!';
-    resultMessDiv.textContent = 'Score 5 points first to win the game';
-    userScoreDiv.textContent = 0;
-    comScoreDiv.textContent = 0;
-    humanScore = 0;
-    computerScore = 0;
-}
-// reset game on playAgainBtn click
-playAgainBtn.addEventListener('click', function() {
-    winnerPrompt.classList.add('hidden');
-    resetGame();
-});
-// hide winnerPrompt if user click on background
-winnerPrompt.addEventListener('click', function(e) {
-    if (!winnerPromptContent.contains(e.target)) winnerPrompt.classList.add('hidden');
-},{capture:true})
