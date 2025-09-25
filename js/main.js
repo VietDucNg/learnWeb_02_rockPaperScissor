@@ -62,8 +62,8 @@ function playRound(humanChoice, computerChoice) {
 
 // function to reset the game
 function resetGame() {
-    resultInfoDiv.textContent = 'Choose your weapon and challenge the computer!';
-    resultMessDiv.textContent = 'The one score 5 points first wins the game';
+    resultInfoDiv.textContent = 'Pick your fighter and challenge the computer!';
+    resultMessDiv.textContent = 'Score 5 points first to win the game';
     userScoreDiv.textContent = 0;
     comScoreDiv.textContent = 0;
     humanScore = 0;
