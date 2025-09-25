@@ -1,4 +1,12 @@
-// the user play the game against computer
+const userScoreDiv = document.querySelector('.userScore');
+const comScoreDiv = document.querySelector('.comScore');
+const resultInfoDiv = document.querySelector('.resultInfo');
+const resultMessDiv = document.querySelector('.resultMess');
+const winnerPrompt = document.querySelector('.winnerPrompt');
+const winnerPromptContent = document.querySelector('.winnerPromptContent');
+const winnerMess = document.querySelector('.winnerMess');
+const userSelect_btn = document.querySelectorAll('.userSelect');
+const playAgainBtn = document.querySelector('.playAgainBtn');
 
 // function to randomly return computer choice of rock or paper or scissor
 function getComputerChoice() {
@@ -8,7 +16,6 @@ function getComputerChoice() {
     else return 'scissors'
 }
 
-// function to get user choice
 function getHumanChoice(btn) {
     if (btn.classList.contains('rock_btn')) return 'ROCK';
     else if (btn.classList.contains('paper_btn')) return 'PAPER';
@@ -60,7 +67,31 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-// function to reset the game
+function callWinnerPrompt() {
+    winnerPrompt.classList.remove('hidden');
+    winnerMess.textContent = (computerScore === 5) ? 'You lost! 😓' : 'You won! 🎉';
+}
+
+// launch the game on user selection click
+userSelect_btn.forEach( btn => btn.addEventListener('click', function() {
+    // prompt winner message if someone reach 5 points
+    if (humanScore === 5 || computerScore === 5) callWinnerPrompt();
+    else {
+        let result = playRound(getHumanChoice(btn), getComputerChoice());
+
+        // display message and score
+        resultInfoDiv.textContent = result[0];
+        resultMessDiv.textContent = result[1];
+        userScoreDiv.textContent = humanScore;
+        comScoreDiv.textContent = computerScore;
+
+        // prompt winner message if someone reach 5 points
+        if (humanScore === 5 || computerScore === 5) callWinnerPrompt();
+    }
+}))
+
+
+// // winnerPrompt: click background and click playAgainBtn
 function resetGame() {
     resultInfoDiv.textContent = 'Pick your fighter and challenge the computer!';
     resultMessDiv.textContent = 'Score 5 points first to win the game';
@@ -69,38 +100,12 @@ function resetGame() {
     humanScore = 0;
     computerScore = 0;
 }
-
-// launch the game on user selection click
-const userScoreDiv = document.querySelector('.userScore');
-const comScoreDiv = document.querySelector('.comScore');
-const resultInfoDiv = document.querySelector('.resultInfo');
-const resultMessDiv = document.querySelector('.resultMess');
-
-const userSelect_btn = document.querySelectorAll('.userSelect');
-userSelect_btn.forEach( btn => btn.addEventListener('click', function() {
-    let result = playRound(getHumanChoice(btn), getComputerChoice());
-
-    // display message and score
-    resultInfoDiv.textContent = result[0];
-    resultMessDiv.textContent = result[1];
-    userScoreDiv.textContent = humanScore;
-    comScoreDiv.textContent = computerScore;
-
-    // reset game if someone reach 5 points
-    if (humanScore === 5 || computerScore === 5) resetGame();
-}))
-
-
-
-
-
-// play the game 5 rounds
-// function playGame() {
-//     for (let i=1; i<=5; i++) {
-//         console.log(playRound(humanChoice=getHumanChoice(), computerChoice=getComputerChoice()));
-//         console.log(`Your'score: ${humanScore}\nComputer'score: ${computerScore}`);
-//     }
-// }
-
-// playGame();
-
+// reset game on playAgainBtn click
+playAgainBtn.addEventListener('click', function() {
+    winnerPrompt.classList.add('hidden');
+    resetGame();
+});
+// hide winnerPrompt if user click on background
+winnerPrompt.addEventListener('click', function(e) {
+    if (!winnerPromptContent.contains(e.target)) winnerPrompt.classList.add('hidden');
+},{capture:true})
