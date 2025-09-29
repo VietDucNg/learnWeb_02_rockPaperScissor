@@ -1,0 +1,12 @@
+body {
+    color: #E6E0C9;
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+}
+
+.header, .footer {
+    background-color: #163e44;
+}
+
+.footer a {
+    color: #ffca42;
+}
