@@ -11,10 +11,12 @@ const userChoiceIcon = document.querySelector('.userChoiceIcon');
 const comChoiceIcon = document.querySelector('.comChoiceIcon');
 
 function getComputerChoice() {
-    let num = Math.random().toFixed(2);
-    if (num >= 0 && num < 0.33) return 'rock';
-    else if (num >= 0.33 && num <= 0.66) return 'paper';
-    else return 'scissors'
+    let num = Math.floor(Math.random()*3);
+    switch (num) {
+        case 0: return 'rock'
+        case 1: return 'paper';
+        case 2: return 'scissors';
+    }
 }
 
 function getHumanChoice(btn) {
