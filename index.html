@@ -6,34 +6,56 @@
     <title>Rock Paper Scissor game</title>
     <!-- link my css -->
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/backbone.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/winnerPrompt.css">
     <!-- link fontawesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- link press start 2P font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <!-- link my js script -->
     <script type="module" src="js/main.js"></script>
 </head>
-<body>
-    <!-- result display div -->
-    <div class="resultBoard">
-        <h2 class="resultInfo">Pick your fighter and challenge the computer!</h2>
-        <h3 class="resultMess">Score 5 points first to win the game</h3>
-    </div>
-    <div class="userChoiceIcon"><i class="fa-solid fa-question" style="color: #e0ab4c;"></i></div>
-    <div class="comChoiceIcon"><i class="fa-solid fa-question" style="color: #e0ab4c;"></i></div>
-    <div>You: <span class="userScore">0</span></div>
-    <div>Computer: <span class="comScore">0</span></div>
-    <!-- user selection buttons -->
-    <button class="userSelect rock_btn">✊</button>
-    <button class="userSelect paper_btn">✋</button>
-    <button class="userSelect scissors_btn">✌</button>
-    <!-- winer prompt -->
-     <!-- Winner Modal -->
-    <div class="winnerPrompt hidden">
-        <div class="winnerPromptContent">
-            <p class="winnerMess">You win! 😃</p>
-            <button class="playAgainBtn">Play again</button>
+<body class="body column">
+    <div class="header row"><h1 class="title">Rock Paper Scissors</h1></div>
+
+    <div class="block1 column">
+        <!-- result board -->
+        <div class="resultBoard column">
+            <h2 class="resultInfo">Pick your fighter and challenge the computer!</h2>
+            <h3 class="resultMess">Score 5 points first to win the game</h3>
+        </div>
+        <!-- selection and score board -->
+        <div class="selectionBoard row">
+            <div class="userBoard column">
+                <div class="userChoiceIcon"><i class="fa-solid fa-question" style="color: #e0ab4c;"></i></div>
+                <div>You: <span class="userScore">0</span></div>
+            </div>
+            <div class="comBoard column">
+                <div class="comChoiceIcon"><i class="fa-solid fa-question" style="color: #e0ab4c;"></i></div>
+                <div>Computer: <span class="comScore">0</span></div>
+            </div>
+        </div>
+        
+        <!-- user selection buttons -->
+         <div class="userSelections row">
+            <button class="userSelect rockBtn">👊</button>
+            <button class="userSelect paperBtn">🖐</button>
+            <button class="userSelect scissorsBtn">✌</button>
+        </div>
+        <!-- winer prompt -->
+        <!-- Winner Modal -->
+        <div class="winnerPrompt hidden">
+            <div class="winnerPromptContent">
+                <p class="winnerMess">You win! 😃</p>
+                <button class="playAgainBtn">Play again</button>
+            </div>
         </div>
     </div>
+
+    <footer class="footer row">
+        <p>Copyright © <a href="https://vietducng.github.io/">Viet Nguyen</a> 2025</p>
+    </footer>
+
 </body>
 </html>

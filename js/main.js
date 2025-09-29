@@ -10,8 +10,6 @@ const playAgainBtn = document.querySelector('.playAgainBtn');
 const userChoiceIcon = document.querySelector('.userChoiceIcon');
 const comChoiceIcon = document.querySelector('.comChoiceIcon');
 
-
-// function to randomly return computer choice of rock or paper or scissor
 function getComputerChoice() {
     let num = Math.random().toFixed(2);
     if (num >= 0 && num < 0.33) return 'rock';
@@ -20,9 +18,9 @@ function getComputerChoice() {
 }
 
 function getHumanChoice(btn) {
-    if (btn.classList.contains('rock_btn')) return 'ROCK';
-    else if (btn.classList.contains('paper_btn')) return 'PAPER';
-    else if (btn.classList.contains('scissors_btn')) return 'SCISSORS';
+    if (btn.classList.contains('rockBtn')) return 'ROCK';
+    else if (btn.classList.contains('paperBtn')) return 'PAPER';
+    else if (btn.classList.contains('scissorsBtn')) return 'SCISSORS';
 }
 
 // game logic for 1 round
@@ -62,10 +60,10 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function getChoiceIcon (choice) {
-    if (choice.toUpperCase() === 'ROCK') return '✊';
-    else if (choice.toUpperCase() === 'PAPER') return '✋';
+    if (choice.toUpperCase() === 'ROCK') return '👊';
+    else if (choice.toUpperCase() === 'PAPER') return '🖐';
     else return '✌';
-}
+} 
 
 function resetGame() {
     resultInfoDiv.textContent = 'Pick your fighter and challenge the computer!';
