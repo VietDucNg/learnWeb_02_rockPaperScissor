@@ -56,7 +56,7 @@ h3 {
 .selectionBoard {
     margin: 30px;
     justify-content: space-between;
-    gap: 30px;
+    gap: 100px;
 }
 
 .userBoard, .comBoard {
