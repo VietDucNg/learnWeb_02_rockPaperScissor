@@ -4,11 +4,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(16, 60, 66, 0.8);
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000;
+  justify-content: center;
+  z-index: 10;
 }
 
 .hidden {
@@ -16,26 +16,28 @@
 }
 
 .winnerPromptContent {
-  background: #1e1e1e;
-  color: white;
-  padding: 2rem;
-  border-radius: 12px;
+  background-color: #0e2e32;
+  padding: 30px 40px;
+  border: 4px solid #E6E0C9;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
-  max-width: 300px;
-  width: 80%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.winnerMess {
+  font-size: 1.2rem;
+  color: #FFD43B;
+  margin-bottom: 20px;
 }
 
 .playAgainBtn {
-  margin-top: 1rem;
-  background: #444;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 10px 20px;
+  color: #103c42;
+  background-color: #FFD43B;
 }
 
 .playAgainBtn:hover {
-  background: #666;
+  background-color: #FFC107;
+  transform: scale(1.05);
+  transition: all 0.2s;
 }
