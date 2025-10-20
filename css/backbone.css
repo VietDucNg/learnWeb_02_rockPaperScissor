@@ -43,6 +43,10 @@ h3 {
     align-items: center;
 }
 
+.title, .resultBoard, footer{
+    text-align: center;
+}
+
 /* style block 1 */
 .block1 {
     justify-content: center;
