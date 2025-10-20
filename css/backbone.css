@@ -15,19 +15,6 @@ html {
     flex-wrap: wrap;
 }
 
-/* body */
-.body {
-    justify-content: space-between;
-    flex-wrap: nowrap;
-}
-
-/* style header */
-.header {
-    justify-content: center;
-    align-items: center;
-    height: 20%;
-}
-
 h1 {
     font-size: 2.5rem;
 }
@@ -38,6 +25,22 @@ h2 {
 
 h3 {
     font-size: 1rem;
+}
+
+/* body */
+.body {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.header, .block1 {
+    padding: 5vh 5vw;
+}
+
+/* style header */
+.header {
+    justify-content: center;
+    align-items: center;
 }
 
 /* style block 1 */
@@ -75,5 +78,5 @@ h3 {
 .footer {
     justify-content: center;
     align-items: center;
-    height: 5%;
+    padding: 1vh 5vw;
 }
