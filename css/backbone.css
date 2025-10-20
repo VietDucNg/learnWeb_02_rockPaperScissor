@@ -18,6 +18,7 @@ html {
 /* body */
 .body {
     justify-content: space-between;
+    flex-wrap: nowrap;
 }
 
 /* style header */
